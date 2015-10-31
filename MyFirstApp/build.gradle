@@ -2,9 +2,23 @@
 
 buildscript {
     repositories {
+//        mavenLocal()
 //        jcenter()
+//        maven {
+//            url "C:\\Android\\Android Studio\\gradle\\m2repository"
+//            artifactUrls "/Applications/Android Studio.app/Contents/gradle/m2repository"
+//        }
+        // Windows和Mac OS X系统都可以支持，利用了 Android Studio 中 gradle 和 m2repository 在同一目录的规律
+        //
+        // 获取 gradle.gradleHomeDir.absolutePath 的过程：
+        // 1. 参考下面 task clean 中的 rootProject.buildDir
+        // 2. 在 rootProject 上 command + 单击跳转到 Project.java 文件
+        // 3. command + shift + c 取得 Project.java 文件路径：/Applications/Android Studio.app/Contents/gradle/gradle-2.4/src/core/org/gradle/api/Project.java
+        // 4. 浏览/Applications/Android Studio.app/Contents/gradle/gradle-2.4/src/core/org/gradle/api/目录，发现./invocation/Gradle.java
+        // 5. 查看 Gradle.java 文件中的方法，找到 getGradleHomeDir
+        // 6. 参照 rootProject.buildDir 形式得到 gradle.gradleHomeDir.absolutePath
         maven {
-            url "C:\\Android\\Android Studio\\gradle\\m2repository"
+            url gradle.gradleHomeDir.absolutePath + "/../m2repository"
         }
     }
     dependencies {

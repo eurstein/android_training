@@ -3,8 +3,12 @@
 buildscript {
     repositories {
 //        jcenter()
+//        maven {
+//            url "C:\\Android\\Android Studio\\gradle\\m2repository"
+//            artifactUrls "/Applications/Android Studio.app/Contents/gradle/m2repository"
+//        }
         maven {
-            url "C:\\Android\\Android Studio\\gradle\\m2repository"
+            url gradle.gradleHomeDir.absolutePath + "/../m2repository"
         }
     }
     dependencies {
